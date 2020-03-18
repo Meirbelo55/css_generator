@@ -31,10 +31,10 @@ imagepng($destination, 'mes_images/imagedefine.png');
 	 		//echo 'mdrrrr';
 	 	}
 	 	//tant quil ya des photo je recupere leur taille puis je les places 20 px de longeur plus loin que la precedente et 0 px de hauteur qd jarrive a 0px a droite de l'image je place mon image a 20 px de hauteur par rapport a la hauteur de l'image au dessus
-echo imagesx($source1) ."\n";
-echo imagesx($source2) ."\n";
-echo imagesy($source1) ."\n";
-echo imagesy($source2);
+//echo imagesx($source1) ."\n";
+//echo imagesx($source2) ."\n";
+//echo imagesy($source1) ."\n";
+//echo imagesy($source2);
 imagedestroy($destination);//
 imagedestroy($source1);//
 		}
@@ -71,21 +71,63 @@ function my_scandir($dir_path)
 		echo pathinfo($dir_path);
 	}
 }
+ $openadir = opendir('mes_images');
+ //var_dump($openadir);
+ //$read = readdir($openadir);
+ // foreach ($openadir as $value) {
+ // 	$read = readdir($openadir);
+	// echo $read;
+ // }
+   // echo $read;
+$myarray = [];
+$height = 700;
+$width = 800;
+function recursive()
+{
 
-$mondossier = opendir('mes_images');
+}
+$mondossier = opendir('./mes_images');
   while($lire = readdir($mondossier))
   {
     if (pathinfo($lire,PATHINFO_EXTENSION) !== 'png')
        {
-          echo 'alert!!!!!! le sprite peut se faire q"avec les extensions png . <br>';
+          //echo 'alert!!!!!! le sprite peut se faire q"avec les extensions png . <br>';
 
        }
         else
            {
-    echo 'bon format';
-           }
-
-  if ($lire !== '.' && $lire !== '..') {
-    echo $lire . '<br>';
+						  array_push($myarray,'./mes_images/'.$lire);
+						 if ($lire !== '.' && $lire !== '..') {
+							 //$array =  array($lire . '<br>');
+							 //echo $lire.'<br>';
+							 $imgcopy = imagecreatefrompng('./mes_images/'.$lire);
+							 //var_dump($imgcopy).'<br>';
+							 //$dest = imagecreatetruecolor(imagesx($imgcopy),imagesy($imgcopy));
+							 //imagecopy($dest,$imgcopy,0,0,0,0,128,128);
+							 $x = imagesx($imgcopy);
+							 $y = imagesy($imgcopy);
+							 // echo $x;
+							 // echo $y;
+							 //var_dump($myarray);
+							 $i = 0;
+							 foreach ($myarray  as  $value) {
+							 //	echo $value."<br>";
+							 // echo $i++;
+								//echo recursive();
+								//$width++;
+								 $source = imagecreatefrompng($value);
+							 //	echo $source;
+								 $desti = imagecreatetruecolor(700,800);
+							 //	echo $desti.'<br>';
+								$copyimg = 	imagecopy($desti, $source,0, 0, 0, 0,$width,$height);
+							 // var_dump($copyimg);
+								$imgpng = 	imagepng($desti,'./mes_images/sprite.png');
+								 //var_dump($imgpng);
+								$dest1 =	imagedestroy($desti);//
+								//var_dump($dest1);
+								 $dest2 = imagedestroy($source);//
+							 //	var_dump($dest2);
+							 }
+      }
     }
   }

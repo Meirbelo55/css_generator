@@ -1,0 +1,42 @@
+.sprite
+		 		{
+		 			background:url(mes_images/sprite.png) -0px  -0px ;
+
+					width: 5000px;
+					height : 5000px;
+		 		}
+.image1
+		 		{
+		 			background:url(mes_images/sprite.png) -5000px  -0px ;
+
+					width: 512px;
+					height : 494px;
+		 		}
+.image2
+		 		{
+		 			background:url(mes_images/sprite.png) -5512px  -0px ;
+
+					width: 128px;
+					height : 128px;
+		 		}
+.image3
+		 		{
+		 			background:url(mes_images/sprite.png) -5640px  -0px ;
+
+					width: 512px;
+					height : 512px;
+		 		}
+.image4
+		 		{
+		 			background:url(mes_images/sprite.png) -6152px  -0px ;
+
+					width: 256px;
+					height : 256px;
+		 		}
+.pingouin
+		 		{
+		 			background:url(mes_images/sprite.png) -6408px  -0px ;
+
+					width: 160px;
+					height : 160px;
+		 		}
